@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     lateinit var profPic: ImageView
     lateinit var profName: TextView
+    lateinit var adapter: PublicationViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +45,8 @@ class MainActivity : AppCompatActivity() {
 
         val lmanager = LinearLayoutManager(this)
         recyclerView.layoutManager = lmanager
-        recyclerView.adapter = PublicationViewAdapter(this@MainActivity)
+        adapter = PublicationViewAdapter(this@MainActivity)
+        recyclerView.adapter = adapter
         profName = findViewById(R.id.profile_name)
 
         profPic = findViewById<ImageView>(R.id.profile_pic).apply {
@@ -82,5 +84,6 @@ class MainActivity : AppCompatActivity() {
     private fun update() {
         profName.text = loggedUser.name.substringBefore(" ")
         loggedUser.image?.let(profPic::setImageBitmap)
+        adapter.update()
     }
 }

@@ -57,8 +57,8 @@ class CreatePublicationActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG
                 ).show()
 
-                startNewActivity(this@CreatePublicationActivity, MainActivity::class.java)
                 clear()
+                onBackPressed()
             }
         }
 

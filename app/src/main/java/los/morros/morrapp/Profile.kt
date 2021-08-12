@@ -12,6 +12,7 @@ import los.morros.morrapp.util.startNewActivity
 
 class Profile : AppCompatActivity() {
     lateinit var image: ImageView
+    lateinit var adapter: PublicationViewAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -23,6 +24,12 @@ class Profile : AppCompatActivity() {
         }
 
         image = findViewById(R.id.profile_pic)
+
+        adapter = PublicationViewAdapter(this@Profile, loggedUser)
+        findViewById<RecyclerView>(R.id.publications).apply {
+            layoutManager = LinearLayoutManager(this@Profile)
+            adapter = this@Profile.adapter
+        }
 
         update()
     }
@@ -48,10 +55,7 @@ class Profile : AppCompatActivity() {
             text = loggedUser.description
         }
 
-        findViewById<RecyclerView>(R.id.publications).apply {
-            layoutManager = LinearLayoutManager(this@Profile)
-            adapter = PublicationViewAdapter(this@Profile, loggedUser)
-        }
+        adapter.update()
 
         findViewById<ImageView>(R.id.profile_edit).apply {
             setOnClickListener {

@@ -37,7 +37,8 @@ class PublicationViewAdapter(private val activity: Activity, private val user: U
         updateRV = this::update
     }
 
-    class PublicationViewHolder(v: View, activity: Activity) : RecyclerView.ViewHolder(v) {
+    class PublicationViewHolder(v: View, activity: Activity, parent: PublicationViewAdapter) :
+        RecyclerView.ViewHolder(v) {
         private val image: ImageView = v.findViewById(R.id.pub_image)
         private val title: TextView = v.findViewById(R.id.pub_title)
         private val description: TextView = v.findViewById(R.id.pub_description)
@@ -55,13 +56,23 @@ class PublicationViewAdapter(private val activity: Activity, private val user: U
                 lastClickedPublication = publication ?: return@setOnClickListener
                 startNewActivity(activity, PublicationActivity::class.java)
             }
+
+            if (parent.user != null) {
+                v.setOnLongClickListener {
+                    // TODO: Fix app crashing here
+                    realmInstance.executeTransaction {
+                        publication?.deleteFromRealm()
+                    }
+                    true
+                }
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicationViewHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.fragment_scrolling, parent, false)
-        return PublicationViewHolder(v, activity)
+        return PublicationViewHolder(v, activity, this)
     }
 
     override fun onBindViewHolder(holder: PublicationViewHolder, position: Int) {
@@ -74,7 +85,7 @@ class PublicationViewAdapter(private val activity: Activity, private val user: U
         return contextPublications.size
     }
 
-    private fun update() {
+    fun update() {
         val mapped = loadedPublications.map { it.id }
         realmInstance.where(Publication::class.java)
             .apply { user?.let { contains("owner", it.id.toString()) } }.findAll().forEach {
