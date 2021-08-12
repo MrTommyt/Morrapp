@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import los.morros.morrapp.entities.Publication
 import los.morros.morrapp.entities.User
+import los.morros.morrapp.util.realmInstance
 import los.morros.morrapp.util.startNewActivity
 
 lateinit var updateRV: () -> Unit

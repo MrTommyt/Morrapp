@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import los.morros.morrapp.util.WrapContentLinearLayoutManager
 import los.morros.morrapp.util.goToMenu
 import los.morros.morrapp.util.startNewActivity
 
@@ -27,7 +28,7 @@ class Profile : AppCompatActivity() {
 
         adapter = PublicationViewAdapter(this@Profile, loggedUser)
         findViewById<RecyclerView>(R.id.publications).apply {
-            layoutManager = LinearLayoutManager(this@Profile)
+            layoutManager = WrapContentLinearLayoutManager(this@Profile)
             adapter = this@Profile.adapter
         }
 

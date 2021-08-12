@@ -11,7 +11,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import los.morros.morrapp.entities.Publication
 import los.morros.morrapp.util.goToMenu
 import los.morros.morrapp.util.imageContract
-import los.morros.morrapp.util.startNewActivity
+import los.morros.morrapp.util.realmInstance
 
 class CreatePublicationActivity : AppCompatActivity() {
     lateinit var image: ImageView
@@ -79,10 +79,5 @@ class CreatePublicationActivity : AppCompatActivity() {
         image.setImageDrawable(null)
         title.text.clear()
         description.text.clear()
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        startNewActivity(this@CreatePublicationActivity, MainActivity::class.java)
     }
 }

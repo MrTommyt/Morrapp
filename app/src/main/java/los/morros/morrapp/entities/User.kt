@@ -7,8 +7,8 @@ import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 import los.morros.morrapp.R
 import los.morros.morrapp.loggedUser
-import los.morros.morrapp.realmInstance
 import los.morros.morrapp.util.deserializeBitmap
+import los.morros.morrapp.util.realmInstance
 import los.morros.morrapp.util.serializeBitmap
 import java.util.*
 

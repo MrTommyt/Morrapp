@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import los.morros.morrapp.entities.User
+import los.morros.morrapp.util.realmInstance
 import los.morros.morrapp.util.startNewActivity
 
 class LoginActivity : AppCompatActivity() {

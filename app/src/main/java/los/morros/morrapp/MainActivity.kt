@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import los.morros.morrapp.util.WrapContentLinearLayoutManager
 import los.morros.morrapp.util.goToMenu
+import los.morros.morrapp.util.realmInstance
 import los.morros.morrapp.util.startNewActivity
 import los.morros.morrapp.entities.User as MorroUser
 
@@ -43,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val lmanager = LinearLayoutManager(this)
+        val lmanager = WrapContentLinearLayoutManager(this)
         recyclerView.layoutManager = lmanager
         adapter = PublicationViewAdapter(this@MainActivity)
         recyclerView.adapter = adapter

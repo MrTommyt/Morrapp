@@ -8,6 +8,7 @@ import android.widget.ImageView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import los.morros.morrapp.entities.User
 import los.morros.morrapp.util.imageContract
+import los.morros.morrapp.util.realmInstance
 import los.morros.morrapp.util.startNewActivity
 
 class EditProfile : AppCompatActivity() {
@@ -61,7 +62,7 @@ class EditProfile : AppCompatActivity() {
                     if (passwordEdit.text.isNotEmpty())
                         password = passwordEdit.text.toString()
 
-                    realm.executeTransaction {
+                    realmInstance.executeTransaction {
                         image = loggedUser.image
                     }
 
