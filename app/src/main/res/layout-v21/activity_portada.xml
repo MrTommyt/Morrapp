@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Portada">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/texto_bienvenida"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:id="@+id/guest"
+            android:layout_width="183dp"
+            android:layout_height="55dp"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="16dp"
+            android:text="Ver como invitado"
+            android:backgroundTint="@color/gray_orange"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_alignParentStart="true"
+            app:layout_constraintHorizontal_bias="0.727"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            
+            />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="183dp"
+            android:layout_height="55dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="57dp"
+            android:text="Iniciar sesión"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/presentacion"
+        android:layout_width="411dp"
+        android:layout_height="476dp"
+        android:src="@drawable/atardecer_con_barcos"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="3dp"
+        android:contentDescription="Portada" />
+
+    <TextView
+        android:id="@+id/bienvenida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/presentacion"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Bienvenido a Morrapp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bienvenida"
+        android:id="@+id/texto_bienvenida"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="Puede escoger que es lo que desea a partir de ahora, puede conocer la aplicación y sus publicaciones entrando como invitado o puede iniciar sesión y hacer parte de nuestra comunidad" />
+</RelativeLayout>

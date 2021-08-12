@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ComoLlegar">
+
+    <ImageView
+        android:id="@+id/menu"
+        android:layout_width="28dp"
+        android:layout_height="26dp"
+        app:srcCompat="@drawable/menu"
+        android:layout_margin="12dp"
+        android:contentDescription="@string/menu"
+        />
+
+    <TextView
+        android:id="@+id/text_explore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:gravity="end"
+        android:text="@string/nuestro_compromiso"
+        android:textAlignment="textEnd"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/nuestro_compromiso_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="242dp"
+        android:layout_below="@+id/text_explore"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/atardecer"
+        android:contentDescription="atardecer" />
+
+    <TextView
+        android:id="@+id/nuestro_compromiso_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nuestro_compromiso_pic"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/nuestro_compromiso_texto"
+        android:textSize="18sp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contact_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nuestro_compromiso_txt"
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="20dp"
+        />
+
+</RelativeLayout>

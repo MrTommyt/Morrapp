@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CreatePublicationActivity">
+
+    <ImageView
+        android:id="@+id/menu"
+        android:layout_width="28dp"
+        android:layout_height="26dp"
+        app:srcCompat="@drawable/menu"
+        android:layout_margin="12dp"
+        android:contentDescription="@string/menu"
+        />
+
+    <ImageView
+        android:id="@+id/edit_pub_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menu"
+        android:minHeight="20dp"
+        android:layout_gravity="top"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="20dp"
+        />
+
+    <EditText
+        android:id="@+id/edit_pub_name"
+        android:layout_marginHorizontal="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/edit_pub_image"
+        android:layout_marginTop="25dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/finalize_pub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/orange"
+        android:src="@drawable/check_mark"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="25dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_pic_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_above="@id/finalize_pub"
+        android:backgroundTint="@color/orange"
+        app:fabSize="mini"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="25dp"/>
+
+    <EditText
+        android:id="@+id/edit_pub_description"
+        android:layout_marginHorizontal="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:inputType="textMultiLine"
+        android:layout_below="@id/edit_pub_name"
+        />
+
+</RelativeLayout>
