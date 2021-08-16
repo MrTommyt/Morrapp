@@ -13,6 +13,7 @@ import los.morros.morrapp.entities.Publication
 import los.morros.morrapp.entities.User
 import los.morros.morrapp.util.realmInstance
 import los.morros.morrapp.util.startNewActivity
+import java.util.*
 
 lateinit var updateRV: () -> Unit
 
@@ -22,10 +23,11 @@ lateinit var lastClickedPublication: Publication
 
 class PublicationViewAdapter(private val activity: Activity, private val user: User? = null) :
     RecyclerView.Adapter<PublicationViewAdapter.PublicationViewHolder>() {
-    val contextPublications: List<Publication>
+    private val contextPublications: List<Publication>
         get() = if (user != null) loadedPublications.filter { it.owner == user.id.toString() }
         else loadedPublications
     private val loadedPublicationHolders = mutableListOf<PublicationViewHolder>()
+    var count: Int = 0
 
     companion object {
         init {
@@ -38,7 +40,12 @@ class PublicationViewAdapter(private val activity: Activity, private val user: U
         updateRV = this::update
     }
 
-    class PublicationViewHolder(v: View, activity: Activity, parent: PublicationViewAdapter) :
+    class PublicationViewHolder(
+        v: View,
+        activity: Activity,
+        parent: PublicationViewAdapter,
+        private var index: Int
+    ) :
         RecyclerView.ViewHolder(v) {
         private val image: ImageView = v.findViewById(R.id.pub_image)
         private val title: TextView = v.findViewById(R.id.pub_title)
@@ -60,7 +67,14 @@ class PublicationViewAdapter(private val activity: Activity, private val user: U
 
             if (parent.user != null) {
                 v.setOnLongClickListener {
-                    // TODO: Fix app crashing here
+                    publication ?: return@setOnLongClickListener false
+                    // Reorganize indexes
+                    parent.count--
+                    parent.loadedPublicationHolders.removeAt(index)
+                    parent.loadedPublicationHolders.forEachIndexed { index, publication ->
+                        if (index >= this.index) publication.index-- }
+                    parent.notifyItemRemoved(index)
+                    loadedPublications.remove(publication)
                     realmInstance.executeTransaction {
                         publication?.deleteFromRealm()
                     }
@@ -73,7 +87,7 @@ class PublicationViewAdapter(private val activity: Activity, private val user: U
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PublicationViewHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.fragment_scrolling, parent, false)
-        return PublicationViewHolder(v, activity, this)
+        return PublicationViewHolder(v, activity, this, count++)
     }
 
     override fun onBindViewHolder(holder: PublicationViewHolder, position: Int) {
